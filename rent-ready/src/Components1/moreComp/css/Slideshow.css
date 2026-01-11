@@ -1,0 +1,62 @@
+.root2 {
+  width: 100%;
+  height: 8rem;
+  background: black;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+/* Track */
+.slideshow {
+  display: flex;
+  gap: 2.5rem;
+  flex-shrink: 0;
+  animation: move-left 22s linear infinite;
+  padding-right: 25px;
+}
+
+/* Individual items */
+.item {
+  width: 10rem;
+  height: 4rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: #caff3d;
+
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+
+  border-radius: 999px;
+  border: 1px solid rgba(202, 255, 61, 0.25);
+
+  box-shadow:
+    0 0 0 1px rgba(202,255,61,0.08),
+    0 10px 30px rgba(0,0,0,0.6);
+}
+
+/* Motion */
+@keyframes move-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* Optional: slow luxury hover pause */
+.root2:hover .slideshow {
+  animation-play-state: paused;
+}

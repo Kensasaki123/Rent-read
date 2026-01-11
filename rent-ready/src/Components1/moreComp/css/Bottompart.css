@@ -1,0 +1,34 @@
+.footer-root{
+    height: 17rem;
+    background-color: greenyellow;
+    color: black;
+    display: flex;
+    flex-direction: column;
+}
+
+.up-part {
+    display: flex;
+    font-size: 6rem;
+    justify-content: end;
+}
+
+.down-part {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.front{
+    display: flex;
+    flex-direction: column;
+}
+
+.middle{
+    display: flex;
+    flex-direction: column;
+}
+
+.end{
+    display: flex;
+    flex-direction: column;
+}

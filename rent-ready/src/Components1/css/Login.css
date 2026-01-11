@@ -1,0 +1,143 @@
+.login-page {
+  display: grid;
+  place-items: center;   /* horizontal + vertical center */
+  height: 100vh;
+}
+
+.login-page > * {
+  grid-area: 1 / 1;
+  font-family: sans-serif;
+
+}
+
+.rootdiv {
+  background-color: white;
+  width: min(1150px, 90%);
+  height: 700px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  z-index: 2; /* above pattern */
+  border-radius: 16px;   /* optional but recommended */
+}
+
+.leftspace,
+.rightspace {
+  flex: 4;
+  height: 100%;
+}
+
+
+.rightspace {
+  display: flex;
+  justify-content: center;
+}
+
+.down_wrap {
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 2px solid black;
+  box-shadow: 4px 4px black;
+  flex: 1;
+  
+}
+
+.rightspace {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  align-items: center;
+}
+
+.up_wrap {
+  display: flex;
+  gap: 16px;
+  padding: 20px;
+  flex: 0 0 auto;
+}
+
+.up_wrap button {
+  background-color: white;
+  border: none;
+  color: rgb(65, 63, 63);
+  font-weight: 700;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.down_wrap {
+  background-color: rgb(180, 180, 180);
+  width: 100%;
+  height: 100%;
+}
+
+.down-fpart {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  padding: 30px;
+}
+
+.down-fpart input, .down-spart input {
+  
+  padding: 10px 14px;
+    box-sizing: border-box;
+  border-radius: 5px;
+  border: 2px solid black;
+  box-shadow: 4px 4px black;
+}
+
+.down-spart {
+display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  gap: 1rem;
+}
+
+
+.toggle {
+    cursor: pointer;
+}
+
+.down-spart button{
+ background-color: white;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 2px solid black;
+  box-shadow: 4px 4px black;
+    padding: 10px 14px;
+
+}
+
+.social_med {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.social_med{
+  cursor: pointer;
+  background-color: white;
+}
+
+.social_med img:hover {
+  height: 4rem;
+}
+
+
+.leftspace {
+  flex: 4;
+  height: 100%;
+  display: flex;
+}
+
+.leftspace img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* or contain */
+}
