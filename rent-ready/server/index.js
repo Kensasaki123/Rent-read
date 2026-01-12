@@ -7,7 +7,6 @@ import cors from "cors";
 
 const app = express();
 
-await dbConnection
 
 app.use(express.json());
 app.use(cors());
@@ -28,6 +27,20 @@ app.post("/register", async (req, res) => {
     res.send('data caught')
 })
 
+
+const start = async () => {
+ try {
+
+await dbConnection()
+ 
 app.listen(5000, () => {
   console.log("✅ Backend running on http://localhost:5000");
 });
+ } catch(err) {
+  console.log(err)
+ }
+ 
+}
+
+start()
+

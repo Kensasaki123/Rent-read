@@ -1,36 +1,81 @@
-import Pattern from "./moreComp/Pattern"
 import './css/Login.css'
+import { useState } from "react";
+import leftimg from '../assets/young-beautiful-woman-talking-phone-outside.jpg'
+import Login1 from "./Login1";
+import Signup from "./Signup"
 import instaimg from '../assets/instagram-icon.png';
 import goodimg from '../assets/pngwing.com.png'
-import leftimg from '../assets/young-beautiful-woman-talking-phone-outside.jpg'
 
 function Login() {
+   const [sign, setSign] = useState(true)
+   const [email, setEmail] = useState("")
+   const [username, setUsername] = useState("")
+   const [password, setPassword] = useState("")
+   
+   
+  async function handlePost() {
+  try {
+    const res = await fetch("http://localhost:5000/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        email,
+        password,
+      }),
+    });
+
+    if (!res.ok) {
+      throw new Error("Request failed");
+    }
+
+    const data = await res.text();
+    console.log(data);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+   
+   
+
   return (<>
+
+
     
     <div className="login-page">
 
-          <Pattern />
+          
 
       <div className="rootdiv">
       <div className="leftspace">
         <img src={leftimg}  alt="" />
       </div>
       <div className="rightspace">
+        
         <div className="wrapper">
           <div className="up_wrap">
-            <button>Login</button>
+            <button onClick={() => setSign(true)}>Login</button>
             <div className="toggle">-</div>
-            <button>Sign up</button>
+            <button onClick={() => setSign(false)}>Sign up</button>
           </div>
-          <div className="down_wrap">
-            <div className="down-fpart">
-              <h2>Log in</h2>
-              <input type="text" placeholder="Email" />
-            </div>
-            <div className="down-spart">
-              <input type="text" placeholder="Password" />
-              <button>Let's Rent</button>
-            </div>
+          {sign ? 
+          <Login1 
+           email={email}
+           setEmail={setEmail}
+           password={password}
+           setPassword={setPassword}
+            /> : 
+          <Signup
+           email={email}
+           setEmail={setEmail}
+           password={password}
+           setPassword={setPassword}
+           username={username}
+           setUsername={setUsername} />}
+            <button className='postbtn' onClick={handlePost}>Let's Rent</button>
             <div className="social_med">
               <div className="insta">
                 <img src={instaimg} height={50} alt="" />
@@ -39,7 +84,7 @@ function Login() {
                 <img src={goodimg} height={50} alt="" />
               </div>
             </div>
-          </div>
+       
         </div>
       </div>
     </div>
