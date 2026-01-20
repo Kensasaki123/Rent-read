@@ -19,7 +19,7 @@ app.get("/api/health", (req, res) => {
 app.post("/register", async (req, res) => {
   const {username, email, password} = req.body
   console.log(req.body);
-  try{
+  try{  
 
     const user =  await userModel.create({
       username: username,
