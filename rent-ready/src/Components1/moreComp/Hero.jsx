@@ -1,12 +1,36 @@
-import React from 'react'
-import { Link } from "react-router-dom";
 import HeroVid from "../../assets/HeroVid.mp4"
 import './css/Hero.css'
 import outimg from "../../assets/outfit1.jpg"
+import { Link } from "react-router-dom"
+
+import { useState, useRef } from "react";
+
 
 
 
 function Hero() {
+
+const [showCatlog, setShowCatlog] = useState(false);
+
+const showTimer = useRef(null);
+const hideTimer = useRef(null);
+
+const handleEnter = () => {
+  clearTimeout(hideTimer.current);
+
+  showTimer.current = setTimeout(() => {
+    setShowCatlog(true);
+  }, 150);
+};
+
+const handleLeave = () => {
+  clearTimeout(showTimer.current);
+
+  hideTimer.current = setTimeout(() => {
+    setShowCatlog(false);
+  }, 800); 
+};
+
   return (
     <div className="hero">
       <video className="hero-video" src={HeroVid} autoPlay muted loop />
@@ -22,7 +46,47 @@ function Hero() {
  <div className="navele2">
   <div>[ CAMPAIGN ]</div>
   <div>[ GALLERY ]</div>
-  <div>[ PRODUCT ]</div>
+<div
+  className="product_class"
+  onMouseEnter={handleEnter}
+  onMouseLeave={handleLeave}
+>
+        [ PRODUCT ]
+      
+         {showCatlog && (
+  <div className="dropdown">
+    <div className="drop_downCard">
+      
+      {/* MEN */}
+      <div className="catalog-column">
+        <h4 className="catalog-title">MEN</h4>
+       <Link to="/Productshowcase/1">Jeans</Link>
+<Link to="/Productshowcase/2">Jackets & Coats</Link>
+<Link to="/Productshowcase/3">Hoodies</Link>
+<Link to="/Productshowcase/4">Track Pants</Link>
+<Link to="/Productshowcase/5">Footwear</Link>
+<Link to="/Productshowcase/6">Accessories</Link>
+
+        
+      </div>
+
+      {/* WOMEN */}
+      <div className="catalog-column">
+        <h4 className="catalog-title">WOMEN</h4>
+        <a href="#">Sweat pants</a>
+        <a href="#">Dresses</a>
+        <a href="#">Skirts</a>
+        <a href="#">Tops</a>
+        <a href="#">Shirts</a>
+        <a href="#">Accessories</a>
+      </div>
+
+    </div>
+  </div>
+)}
+
+   
+  </div>
  </div>
  <div className="navele3">
   <div>[ CART ]</div>
