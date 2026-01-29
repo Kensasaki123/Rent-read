@@ -15,7 +15,7 @@ function Login() {
    
   async function handlePost() {
   try {
-    const res = await fetch("http://localhost:5000/register", {
+    const res = await fetch("https://rent-read.onrender.com/render", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
