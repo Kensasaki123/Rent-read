@@ -1,13 +1,12 @@
-console.log("🔥 index.js started");
-import userModel from './models/user.js'
-import dbConnection from './config/db.js'
-import dotenv from "dotenv";
-dotenv.config();
 import express from "express";
 import cors from "cors";
+import dotenv from "dotenv";
+import userModel from "./models/user.js";
+import dbConnection from "./config/db.js";
+
+dotenv.config();
+
 const app = express();
-
-
 app.use(express.json());
 app.use(cors());
 
@@ -15,37 +14,20 @@ app.get("/api/test", (req, res) => {
   res.json({ message: "Backend is alive" });
 });
 
-
 app.post("/register", async (req, res) => {
-  const {username, gmail, password} = req.body
-  console.log(req.body);
-  try{ 
-    const user =  await userModel.create({
-      username: username,
-      gmail:gmail,
-      password: password,
-    })
-    res.json({user});
-  }catch(error){
-    console.log(error);
+  try {
+    const user = await userModel.create(req.body);
+    res.json(user);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
-})
-console.log(process.env.MONGO_URI);
-const port = process.env.PORT || 3333;
-console.log(port);
-
-const start = async () => {
- try {
-await dbConnection(process.env.MONGO_URI);
- 
-app.listen(port, () => {
-  console.log("✅ Backend running on http://localhost:"+port);
 });
- } catch(err) {
-  console.log(err)
- }
- 
-}
 
-start()
+const port = process.env.PORT || 3333;
+app.listen(port, () => {
+  console.log("✅ Server running on port", port);
+});
 
+dbConnection(process.env.MONGO_URI)
+  .then(() => console.log("✅ MongoDB connected"))
+  .catch(err => console.error("❌ MongoDB error", err));
