@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 
 function Productshowcase() {
-  const { id } = useParams(); // "42"
+  c 
 
   return (
     <div>

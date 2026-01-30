@@ -60,12 +60,12 @@ const handleLeave = () => {
       {/* MEN */}
       <div className="catalog-column">
         <h4 className="catalog-title">MEN</h4>
-       <Link to="/Productshowcase/1">Jeans</Link>
-<Link to="/Productshowcase/2">Jackets & Coats</Link>
-<Link to="/Productshowcase/3">Hoodies</Link>
-<Link to="/Productshowcase/4">Track Pants</Link>
-<Link to="/Productshowcase/5">Footwear</Link>
-<Link to="/Productshowcase/6">Accessories</Link>
+ <Link to="/2">Jackets & Coats</Link>
+<Link to="/3">Hoodies</Link>
+<Link to="/4">Track Pants</Link>
+<Link to="/5">Footwear</Link>
+<Link to="/6">Accessories</Link>
+
 
         
       </div>

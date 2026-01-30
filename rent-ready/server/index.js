@@ -25,9 +25,9 @@ app.post("/register", async (req, res) => {
 
 const port = process.env.PORT || 3333;
 app.listen(port, () => {
-  console.log("✅ Server running on port", port);
+  console.log("Server running on port", port);
 });
 
 dbConnection(process.env.MONGO_URI)
-  .then(() => console.log("✅ MongoDB connected"))
-  .catch(err => console.error("❌ MongoDB error", err));
+  .then(() => console.log("DB connected"))
+  .catch(err => console.error("DB error", err));
